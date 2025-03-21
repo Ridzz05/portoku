@@ -16,30 +16,23 @@ export const users: User[] = [
   },
   {
     id: 2,
-    name: 'Budi',
-    username: '@budi',
-    avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=budi',
+    name: 'Fachtur',
+    username: '@fachtur',
+    avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=fachtur',
     role: 'designer'
   },
   {
     id: 3,
-    name: 'Andi',
-    username: '@andi',
-    avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=andi',
+    name: 'Jaya',
+    username: '@jaya',
+    avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=jaya',
     role: 'content'
   },
   {
     id: 4,
-    name: 'Dedi',
-    username: '@dedi',
-    avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=dedi',
-    role: 'marketing'
-  },
-  {
-    id: 5,
-    name: 'Rudi',
-    username: '@rudi',
-    avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=rudi',
-    role: 'support'
+    name: 'Ferr',
+    username: '@ferr',
+    avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=ferr',
+    role: 'content'
   }
 ]; 
