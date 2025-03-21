@@ -59,6 +59,14 @@ export default function Detail({ user, isOpen, onClose }: DetailProps) {
                   <p>[ bergabung: 2024 ]</p>
                   <p>[ proyek: 5 ]</p>
                   <p>[ kontribusi: tinggi ]</p>
+                  <a 
+                    href={`https://instagram.com/${user.instagram}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:bg-black hover:text-white transition-colors"
+                  >
+                    [ instagram: @{user.instagram} ]
+                  </a>
                 </div>
               </div>
             </div>

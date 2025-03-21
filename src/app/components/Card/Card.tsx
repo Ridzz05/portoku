@@ -44,7 +44,7 @@ export default function Card() {
 
   return (
     <>
-      <div className="relative w-full max-w-sm mx-auto h-64 overflow-hidden border border-black">
+      <div className="relative w-full max-w-sm mx-auto h-72 overflow-hidden border border-black">
         <div className="absolute inset-0 flex items-center justify-center">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -83,6 +83,14 @@ export default function Card() {
                 <p className="text-2xl font-mono uppercase tracking-tight">{users[currentIndex].name}</p>
                 <p className="text-sm font-mono opacity-60">{users[currentIndex].username}</p>
                 <p className="text-xs font-mono mt-1 uppercase">[ {users[currentIndex].role} ]</p>
+                <a 
+                  href={`https://instagram.com/${users[currentIndex].instagram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block mt-1 font-mono text-xs hover:bg-black hover:text-white transition-colors"
+                >
+                  [ @{users[currentIndex].instagram} ]
+                </a>
                 <button
                   onClick={() => setIsDetailOpen(true)}
                   className="mt-2 font-mono text-xs hover:bg-black hover:text-white transition-colors px-2 py-1"

@@ -4,6 +4,7 @@ export interface User {
   username: string;
   avatar: string;
   role: string;
+  instagram: string;
 }
 
 export const users: User[] = [
@@ -12,27 +13,31 @@ export const users: User[] = [
     name: 'Parri',
     username: '@parri',
     avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=parri',
-    role: 'developer'
+    role: 'developer',
+    instagram: 'ezpzlemonsquizy'
   },
   {
     id: 2,
     name: 'Fachtur',
     username: '@fachtur',
     avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=fachtur',
-    role: 'designer'
+    role: 'designer',
+    instagram: 'fachtur.design'
   },
   {
     id: 3,
     name: 'Jaya',
     username: '@jaya',
     avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=jaya',
-    role: 'content'
+    role: 'content',
+    instagram: 'jaya.content'
   },
   {
     id: 4,
     name: 'Ferr',
     username: '@ferr',
     avatar: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=ferr',
-    role: 'content'
+    role: 'marketing',
+    instagram: 'ferr.mktg'
   }
 ]; 
