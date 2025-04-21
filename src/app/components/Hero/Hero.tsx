@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { users } from '@/app/data/users';
+import Image from 'next/image';
 
 export default function Hero() {
   const mainUser = users[0]; 
@@ -23,10 +24,13 @@ export default function Hero() {
             </div>
             {/* Avatar container */}
             <div className="relative w-full h-full rounded-full border-2 border-black overflow-hidden">
-              <img 
+              <Image 
                 src={mainUser.avatar} 
                 alt={mainUser.name}
-                className="w-full h-full object-cover"
+                className="object-cover"
+                fill
+                sizes="(max-width: 768px) 128px, 128px"
+                priority
               />
             </div>
           </div>

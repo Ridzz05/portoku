@@ -13,7 +13,7 @@ export const users: User[] = [
     name: 'Ki/Ri',
     username: '@parri',
     avatar: '/me/me.jpg',
-    role: 'developer',
+    role: 'Junior Web Developer',
     instagram: 'ezpzlemonsquizy'
   }
 ]; 

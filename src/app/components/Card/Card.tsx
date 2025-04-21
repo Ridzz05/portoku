@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { users } from '@/app/data/users';
 import Detail from '../Detail/Detail';
+import Image from 'next/image';
 
 export default function Card() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -89,11 +90,13 @@ export default function Card() {
               className="absolute w-full h-full flex items-center justify-center"
             >
               <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-4 border border-black overflow-hidden">
-                  <img 
+                <div className="relative w-20 h-20 mx-auto mb-4 border border-black overflow-hidden">
+                  <Image 
                     src={users[currentIndex].avatar} 
                     alt={users[currentIndex].name}
-                    className="w-full h-full object-cover"
+                    className="object-cover"
+                    fill
+                    sizes="(max-width: 768px) 80px, 80px"
                   />
                 </div>
                 <p className="text-2xl font-mono uppercase tracking-tight">{users[currentIndex].name}</p>
