@@ -13,18 +13,33 @@ export default function Card() {
   const slideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
-      opacity: 0
+      opacity: 0,
+      scale: 0.8
     }),
     center: {
       zIndex: 1,
       x: 0,
-      opacity: 1
+      opacity: 1,
+      scale: 1
     },
     exit: (direction: number) => ({
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
-      opacity: 0
+      opacity: 0,
+      scale: 0.8
     })
+  };
+
+  const buttonVariants = {
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.2
+      }
+    },
+    tap: {
+      scale: 0.95
+    }
   };
 
   const swipeConfidenceThreshold = 10000;
@@ -56,7 +71,8 @@ export default function Card() {
               exit="exit"
               transition={{
                 x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 }
+                opacity: { duration: 0.3 },
+                scale: { duration: 0.3 }
               }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
@@ -91,31 +107,40 @@ export default function Card() {
                 >
                   [ @{users[currentIndex].instagram} ]
                 </a>
-                <button
+                <motion.button
+                  whileHover="hover"
+                  whileTap="tap"
+                  variants={buttonVariants}
                   onClick={() => setIsDetailOpen(true)}
                   className="mt-2 font-mono text-xs hover:bg-black hover:text-white transition-colors px-2 py-1"
                 >
                   [ detail ]
-                </button>
+                </motion.button>
                 <p className="text-xs mt-2 font-mono">[ {currentIndex + 1} / {users.length} ]</p>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
         
-        <button
+        <motion.button
+          whileHover="hover"
+          whileTap="tap"
+          variants={buttonVariants}
           className="absolute left-4 top-1/2 -translate-y-1/2 font-mono text-sm hover:bg-black hover:text-white transition-colors px-2 py-1"
           onClick={() => paginate(-1)}
         >
           [ ← ]
-        </button>
+        </motion.button>
         
-        <button
+        <motion.button
+          whileHover="hover"
+          whileTap="tap"
+          variants={buttonVariants}
           className="absolute right-4 top-1/2 -translate-y-1/2 font-mono text-sm hover:bg-black hover:text-white transition-colors px-2 py-1"
           onClick={() => paginate(1)}
         >
           [ → ]
-        </button>
+        </motion.button>
       </div>
 
       <Detail 
