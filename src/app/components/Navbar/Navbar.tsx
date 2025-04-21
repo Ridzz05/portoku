@@ -17,7 +17,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            ꦈꦧ
+            ꦬꦰ꧀
           </motion.a>
           
           {/* Mobile Menu Button */}
@@ -53,20 +53,6 @@ export default function Navbar() {
                   whileHover={{ x: 10 }}
                 >
                   Home
-                </motion.a>
-                <motion.a 
-                  href="/about" 
-                  className="px-4 py-3 border-t border-black hover:bg-black hover:text-white transition-colors uppercase tracking-tight"
-                  whileHover={{ x: 10 }}
-                >
-                  About Us
-                </motion.a>
-                <motion.a 
-                  href="/contact" 
-                  className="px-4 py-3 border-t border-black hover:bg-black hover:text-white transition-colors uppercase tracking-tight"
-                  whileHover={{ x: 10 }}
-                >
-                  Contact Us
                 </motion.a>
               </div>
             </div>

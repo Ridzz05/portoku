@@ -95,21 +95,6 @@ export default function Detail({ user, isOpen, onClose }: DetailProps) {
                 <h2 className="text-xl uppercase tracking-tight mb-2">{user.name}</h2>
                 <p className="text-sm opacity-60 mb-1">{user.username}</p>
                 <p className="text-xs uppercase mb-4">[ {user.role} ]</p>
-                
-                <div className="space-y-2 text-xs">
-                  <p>[ status: aktif ]</p>
-                  <p>[ bergabung: 2024 ]</p>
-                  <p>[ proyek: 5 ]</p>
-                  <p>[ kontribusi: tinggi ]</p>
-                  <a 
-                    href={`https://instagram.com/${user.instagram}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block hover:bg-black hover:text-white transition-colors"
-                  >
-                    [ instagram: @{user.instagram} ]
-                  </a>
-                </div>
               </div>
             </motion.div>
           </motion.div>
