@@ -4,8 +4,9 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start: 255, 255, 255;
+  --background-accent: 240, 240, 245;
+  --background-pattern: 230, 230, 235;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,10 +19,29 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: 
+    linear-gradient(
+      120deg,
+      rgba(var(--background-start), 1) 0%,
+      rgba(var(--background-accent), 0.8) 100%
+    );
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(120deg, transparent 45%, rgba(var(--background-pattern), 0.5) 45%, transparent 55%),
+    linear-gradient(-120deg, transparent 45%, rgba(var(--background-pattern), 0.5) 45%, transparent 55%),
+    linear-gradient(60deg, transparent 45%, rgba(var(--background-pattern), 0.3) 45%, transparent 55%);
+  background-size: 60px 60px, 60px 60px, 30px 30px;
+  opacity: 0.4;
+  z-index: -1;
+  pointer-events: none;
 }
