@@ -67,7 +67,7 @@ export default function Hero() {
         >
           <p className="font-mono text-sm leading-relaxed">
             [ Seorang {mainUser.role} yang berfokus pada pengembangan solusi kreatif dan inovatif. 
-            Selalu berusaha memberikan yang terbaik dalam setiap proyek. ]
+            Selalu berusaha memberikan yang terbaik dalam setiap proyek yang dibuat. ]
           </p>
         </motion.div>
       </div>
