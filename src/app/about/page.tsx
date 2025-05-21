@@ -17,9 +17,9 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <h1 className="text-4xl font-mono uppercase tracking-tight pt-16 mt-6 mb-8">About Me</h1>  
+            <h1 className="text-4xl font-mono uppercase tracking-tight pt-7 mt-6 mb-8">About Me</h1>  
             
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-5">
               <div className="relative w-40 h-40">
                 <div className="relative w-full h-full rounded-full border-2 border-black overflow-hidden">
                   <Image 
