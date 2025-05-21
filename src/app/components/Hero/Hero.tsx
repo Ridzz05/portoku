@@ -49,13 +49,16 @@ export default function Hero() {
             >
               [ Instagram ]
             </motion.a>
-            <motion.button
+            <motion.a
+              href="https://github.com/Ridzz05"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-mono text-sm border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              [ Portfolio ]
-            </motion.button>
+              [ GitHub ]
+            </motion.a>
           </div>
         </motion.div>
 
