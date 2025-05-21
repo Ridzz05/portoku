@@ -6,6 +6,16 @@ const nextConfig = {
             {
                 hostname: 'freepik.com',
             },
+            {
+                hostname: 'images.unsplash.com',
+            },
+            {
+                hostname: 'images.pexels.com',
+            },
+            {
+                hostname: 'github.com',
+            },
+
         ],
     },
 }
