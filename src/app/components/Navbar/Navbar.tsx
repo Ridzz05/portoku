@@ -24,7 +24,7 @@ export default function Navbar() {
           <motion.button 
             onClick={() => setIsOpen(!isOpen)}
             className="text-xs uppercase tracking-tight hover:bg-black hover:text-white transition-colors px-2 py-1.5 my-1.5"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.00 }}
             whileTap={{ scale: 0.95 }}
           >
             {isOpen ? '[ tutup ]' : '[ menu ]'}
@@ -53,6 +53,24 @@ export default function Navbar() {
                   whileHover={{ x: 10 }}
                 >
                   Home
+                </motion.a>
+              </div>
+              <div className="flex flex-col text-sm">
+                <motion.a 
+                  href="/about" 
+                  className="px-4 py-3 hover:bg-black hover:text-white transition-colors uppercase tracking-tight"
+                  whileHover={{ x: 10 }}
+                  >
+                    About Me
+                </motion.a>
+              </div>
+              <div className="flex flex-col text-sm">
+                <motion.a 
+                  href="/contact" 
+                  className="px-4 py-3 hover:bg-black hover:text-white transition-colors uppercase tracking-tight"
+                  whileHover={{ x: 10 }}
+                >
+                  Contact
                 </motion.a>
               </div>
             </div>
