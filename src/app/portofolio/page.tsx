@@ -39,9 +39,9 @@ export default function Portfolio() {
                   transition={{ delay: 0.2 * index, duration: 0.5 }}
                   className="border border-black p-4 text-left"
                 >
-                  <div className="relative h-48 mb-4 overflow-hidden border border-black">
-                    <div className={`absolute inset-0 ${project.bgColor} flex items-center justify-center`}>
-                      {/* Fallback content jika gambar gagal dimuat */}
+                  <div className="relative h-48 mb-4 overflow-hidden border border-black group">
+                    {/* Fallback background jika gambar gagal dimuat */}
+                    <div className={`absolute inset-0 ${project.bgColor} flex items-center justify-center z-0`}>
                       <span className="font-mono text-2xl">[ {project.title} ]</span>
                     </div>
                     
@@ -50,7 +50,7 @@ export default function Portfolio() {
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover hover:opacity-80 transition-opacity"
+                      className="object-cover z-10 transition-all duration-300 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       priority={index < 2}
                       onError={(e) => {
@@ -59,6 +59,13 @@ export default function Portfolio() {
                         target.style.display = 'none';
                       }}
                     />
+                    
+                    {/* Overlay dengan judul yang muncul saat hover */}
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 flex items-center justify-center z-20 transition-all duration-300">
+                      <span className="font-mono text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        [ {project.title} ]
+                      </span>
+                    </div>
                   </div>
                   
                   <h3 className="font-mono text-xl uppercase tracking-tight mb-2">{project.title}</h3>
