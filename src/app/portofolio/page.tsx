@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { projects } from '@/app/data/portofolio';
 
 export default function Portfolio() {
@@ -38,8 +39,26 @@ export default function Portfolio() {
                   transition={{ delay: 0.2 * index, duration: 0.5 }}
                   className="border border-black p-4 text-left"
                 >
-                  <div className={`relative h-48 mb-4 overflow-hidden border border-black ${project.bgColor} flex items-center justify-center`}>
-                    <span className="font-mono text-2xl">[ {project.title} ]</span>
+                  <div className="relative h-48 mb-4 overflow-hidden border border-black">
+                    <div className={`absolute inset-0 ${project.bgColor} flex items-center justify-center`}>
+                      {/* Fallback content jika gambar gagal dimuat */}
+                      <span className="font-mono text-2xl">[ {project.title} ]</span>
+                    </div>
+                    
+                    {/* Image with error handling */}
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover hover:opacity-80 transition-opacity"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority={index < 2}
+                      onError={(e) => {
+                        // Jika gambar gagal dimuat, fallback content akan tetap ditampilkan
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
                   </div>
                   
                   <h3 className="font-mono text-xl uppercase tracking-tight mb-2">{project.title}</h3>
