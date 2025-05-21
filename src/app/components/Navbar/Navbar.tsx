@@ -66,6 +66,15 @@ export default function Navbar() {
               </div>
               <div className="flex flex-col text-sm">
                 <motion.a 
+                  href="/portofolio" 
+                  className="px-4 py-3 hover:bg-black hover:text-white transition-colors uppercase tracking-tight"
+                  whileHover={{ x: 10 }}
+                >
+                  Portofolio
+                </motion.a>
+              </div>
+              <div className="flex flex-col text-sm">
+                <motion.a 
                   href="/contact" 
                   className="px-4 py-3 hover:bg-black hover:text-white transition-colors uppercase tracking-tight"
                   whileHover={{ x: 10 }}
