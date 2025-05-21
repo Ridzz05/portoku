@@ -48,7 +48,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <h1 className="text-4xl font-mono uppercase tracking-tight mb-6">Contact Me</h1>
+            <h1 className="text-4xl font-mono uppercase tracking-tight pt-16 mt-6 mb-8">Contact Me</h1>
             
             <div className="max-w-lg mx-auto">
               <motion.div
