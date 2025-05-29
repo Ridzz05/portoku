@@ -80,8 +80,6 @@ export default function About() {
             </div>
           </motion.div>
         </div>
-
-        {/* Background decoration - same as home page */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.05 }}
