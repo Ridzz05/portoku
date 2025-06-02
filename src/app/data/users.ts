@@ -10,7 +10,7 @@ export interface User {
 export const users: User[] = [
   {
     id: 1,
-    name: 'Ki/Ri',
+    name: 'RIZKI',
     username: '@parri',
     avatar: '/me/me.svg',
     role: 'Junior Web Developer',

@@ -12,20 +12,20 @@ export interface Project {
   export const projects: Project[] = [
     {
       id: 1,
-      title: "Personal Website",
-      description: "Website personal dengan desain minimalis menggunakan Next.js dan Tailwind CSS.",
+      title: "Macommerce",
+      description: "Website ini awalnya dibuat hanya sekedar iseng semata, tapi makin hari aku selalu mengembangkan beberapa fitur pada website.",
       bgColor: "bg-gray-200",
       image: "https://img.freepik.com/free-vector/gradient-website-template_23-2149160298.jpg",
-      tags: ["Next.js", "Tailwind CSS", "React"],
-      link: "https://github.com/Ridzz05"
+      tags: ["Next.JS", "Tailwind CSS", "Framer Motion"],
+      link: "https://github.com/Ridzz05/macommerce/"
     },
     {
       id: 2,
-      title: "E-Commerce Dashboard",
-      description: "Dashboard admin untuk platform e-commerce dengan fitur analitik dan manajemen produk.",
+      title: "Aplikasi Kasir Sederhana",
+      description: "Aplikasi kasir ini dibuat dengan menggunakan Framework Flutter, mengintegrasikan SQLite untuk membuat aplikasi menjadi offline sepenuhnya.",
       bgColor: "bg-gray-300",
       image: "https://img.freepik.com/free-vector/dashboard-user-panel-template_23-2148399136.jpg",
-      tags: ["React", "TypeScript", "Chart.js"],
+      tags: ["Flutter", "Dart", "SQLite", "UI/UX", "Prototype", "Figma"],
       link: "https://github.com/Ridzz05"
     },
     {
