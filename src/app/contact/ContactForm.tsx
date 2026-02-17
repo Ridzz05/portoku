@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { PaperAirplaneIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 
 export default function ContactForm() {
   const [formState, setFormState] = useState({
@@ -22,12 +23,12 @@ export default function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormState({ name: '', email: '', message: '' });
-      
+
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
@@ -36,22 +37,28 @@ export default function ContactForm() {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.4, duration: 0.6 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.3 }}
     >
       {isSubmitted ? (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="font-mono text-sm border border-black p-6 mb-6"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="neo-card bg-neo-mint p-6 text-center"
         >
-          [ Terima kasih! Pesan Anda telah terkirim. Saya akan menghubungi Anda segera. ]
+          <CheckCircleIcon className="w-12 h-12 mx-auto mb-3 stroke-[2]" />
+          <p className="font-grotesk font-bold text-lg mb-1">Terima kasih!</p>
+          <p className="font-grotesk text-sm">
+            Pesan Anda telah terkirim. Saya akan menghubungi Anda segera.
+          </p>
         </motion.div>
       ) : (
-        <form onSubmit={handleSubmit} className="text-left">
-          <div className="mb-4">
-            <label htmlFor="name" className="block font-mono text-sm uppercase mb-2">Nama</label>
+        <form onSubmit={handleSubmit} className="text-left space-y-5">
+          <div>
+            <label htmlFor="name" className="block font-grotesk text-sm font-bold uppercase mb-2">
+              Nama
+            </label>
             <input
               type="text"
               id="name"
@@ -59,12 +66,15 @@ export default function ContactForm() {
               value={formState.name}
               onChange={handleChange}
               required
-              className="w-full font-mono text-sm border border-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+              placeholder="Masukkan nama Anda"
+              className="neo-input"
             />
           </div>
-          
-          <div className="mb-4">
-            <label htmlFor="email" className="block font-mono text-sm uppercase mb-2">Email</label>
+
+          <div>
+            <label htmlFor="email" className="block font-grotesk text-sm font-bold uppercase mb-2">
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -72,12 +82,15 @@ export default function ContactForm() {
               value={formState.email}
               onChange={handleChange}
               required
-              className="w-full font-mono text-sm border border-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+              placeholder="email@example.com"
+              className="neo-input"
             />
           </div>
-          
-          <div className="mb-6">
-            <label htmlFor="message" className="block font-mono text-sm uppercase mb-2">Pesan</label>
+
+          <div>
+            <label htmlFor="message" className="block font-grotesk text-sm font-bold uppercase mb-2">
+              Pesan
+            </label>
             <textarea
               id="message"
               name="message"
@@ -85,19 +98,25 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               rows={5}
-              className="w-full font-mono text-sm border border-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-            ></textarea>
+              placeholder="Tulis pesan Anda di sini..."
+              className="neo-input resize-none"
+            />
           </div>
-          
-          <div className="text-center">
+
+          <div className="text-center pt-2">
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className={`font-mono text-sm border border-black px-8 py-2 ${isSubmitting ? 'bg-gray-200' : 'hover:bg-black hover:text-white'} transition-colors`}
-              whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
-              whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+              className={`neo-btn inline-flex items-center gap-2 text-sm ${
+                isSubmitting
+                  ? 'bg-gray-200 cursor-not-allowed'
+                  : 'bg-neo-yellow hover:bg-yellow-300'
+              }`}
+              whileHover={isSubmitting ? {} : { y: -3, boxShadow: '6px 6px 0px #1A1A1A' }}
+              whileTap={isSubmitting ? {} : { y: 1, boxShadow: '2px 2px 0px #1A1A1A' }}
             >
-              {isSubmitting ? '[ Mengirim... ]' : '[ Kirim Pesan ]'}
+              <PaperAirplaneIcon className="w-4 h-4 stroke-[2.5]" />
+              {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
             </motion.button>
           </div>
         </form>

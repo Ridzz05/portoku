@@ -8,12 +8,18 @@ interface AnimatedContainerProps {
   className?: string;
 }
 
+const springTransition = {
+  type: 'spring' as const,
+  stiffness: 200,
+  damping: 20,
+};
+
 export function AnimatedContact({ children, className }: AnimatedContainerProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={springTransition}
       className={className}
     >
       {children}
@@ -24,9 +30,9 @@ export function AnimatedContact({ children, className }: AnimatedContainerProps)
 export function AnimatedText({ children, className }: AnimatedContainerProps) {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.3, duration: 0.6 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ ...springTransition, delay: 0.2 }}
       className={className}
     >
       {children}
@@ -37,9 +43,9 @@ export function AnimatedText({ children, className }: AnimatedContainerProps) {
 export function AnimatedSocialLinks({ children, className }: AnimatedContainerProps) {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.6, duration: 0.6 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ ...springTransition, delay: 0.4 }}
       className={className}
     >
       {children}
@@ -47,32 +53,33 @@ export function AnimatedSocialLinks({ children, className }: AnimatedContainerPr
   );
 }
 
-export function AnimatedLink({ href, className }: { href: string; className: string }) {
+export function AnimatedLink({ href, className }: { href: string; className?: string }) {
+  const getLabel = () => {
+    if (href.includes('instagram')) return 'Instagram';
+    if (href.includes('github')) return 'GitHub';
+    return 'LinkedIn';
+  };
+
+  const getColor = () => {
+    if (href.includes('instagram')) return 'bg-neo-pink';
+    if (href.includes('github')) return 'bg-neo-lavender';
+    return 'bg-neo-sky';
+  };
+
   return (
     <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={className}
-      whileHover={{ scale: 1.05, backgroundColor: 'black', color: 'white' }}
-      whileTap={{ scale: 0.95 }}
+      className={`neo-border shadow-brutal ${getColor()} px-5 py-2.5 font-bold text-sm inline-block ${className || ''}`}
+      whileHover={{ y: -3, boxShadow: '6px 6px 0px #1A1A1A', scale: 1.05 }}
+      whileTap={{ y: 1, boxShadow: '2px 2px 0px #1A1A1A', scale: 0.95 }}
     >
-      {href.includes('instagram') ? '[ Instagram ]' : 
-       href.includes('github') ? '[ GitHub ]' : 
-       '[ LinkedIn ]'}
+      {getLabel()}
     </motion.a>
   );
 }
 
 export function AnimatedBackground() {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 0.05 }}
-      transition={{ delay: 0.6, duration: 0.8 }}
-      className="absolute inset-0 pointer-events-none"
-    >
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTQtMi4yMSAwLTQgMS43OS00IDQgMCAyLjIxIDEuNzkgNCA0IDQgMi4yMSAwIDQtMS43OSA0LTR6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=')] opacity-5"></div>
-    </motion.div>
-  );
+  return null;
 }

@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { User } from '@/app/data/users';
 import Image from 'next/image';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 interface DetailProps {
   user: User | null;
@@ -22,82 +23,77 @@ export default function Detail({ user, isOpen, onClose }: DetailProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            className="fixed inset-0 bg-black/50 z-40"
           />
-          
+
           {/* Modal */}
           <motion.div
-            initial={{ y: "100%", opacity: 0 }}
-            animate={{ 
+            initial={{ y: '100%', opacity: 0, rotate: 2 }}
+            animate={{
               y: 0,
               opacity: 1,
-              transition: {
-                type: "spring",
-                damping: 25,
-                stiffness: 300,
-                opacity: { duration: 0.3 }
-              }
+              rotate: 0,
+              transition: { type: 'spring', damping: 25, stiffness: 300 },
             }}
-            exit={{ 
-              y: "100%",
+            exit={{
+              y: '100%',
               opacity: 0,
-              transition: {
-                type: "spring",
-                damping: 25,
-                stiffness: 300,
-                opacity: { duration: 0.2 }
-              }
+              rotate: -2,
+              transition: { type: 'spring', damping: 25, stiffness: 300 },
             }}
-            className="fixed bottom-0 left-0 right-0 w-full bg-white border-t border-black p-4 z-50 md:p-6 md:max-w-sm md:mx-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:border"
+            className="fixed bottom-0 left-0 right-0 w-full neo-border border-b-0 shadow-[0_-6px_0px_#1A1A1A] bg-white p-6 z-50
+                       md:bottom-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 
+                       md:max-w-md md:rounded-none md:border-b-[3px] md:shadow-brutal-lg"
           >
-            <div className="text-right mb-4">
-              <motion.button 
+            {/* Close Button */}
+            <div className="flex justify-end mb-4">
+              <motion.button
                 onClick={onClose}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="font-mono text-sm hover:bg-black hover:text-white transition-colors px-2 py-1"
+                className="neo-border shadow-brutal-sm bg-neo-coral text-white p-2"
+                whileHover={{ rotate: 90, scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
-                [ tutup ]
+                <XMarkIcon className="w-5 h-5 stroke-[2.5]" />
               </motion.button>
             </div>
-            
-            <motion.div 
+
+            {/* Content */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: 1, 
-                y: 0,
-                transition: {
-                  delay: 0.2,
-                  duration: 0.3
-                }
-              }}
-              className="flex flex-col items-center space-y-4 md:flex-row md:items-start md:space-x-6 md:space-y-0"
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.15 } }}
+              className="flex flex-col items-center gap-4 md:flex-row md:items-start md:gap-6"
             >
-              <motion.div 
-                initial={{ scale: 0.8 }}
-                animate={{ 
-                  scale: 1,
-                  transition: {
-                    delay: 0.3,
-                    type: "spring",
-                    damping: 20
-                  }
-                }}
-                className="relative w-24 h-24 border border-black overflow-hidden flex-shrink-0"
+              <motion.div
+                initial={{ scale: 0.8, rotate: -5 }}
+                animate={{ scale: 1, rotate: 0, transition: { type: 'spring', damping: 15, delay: 0.2 } }}
+                className="relative w-28 h-28 neo-border shadow-brutal bg-neo-mint rounded-xl overflow-hidden flex-shrink-0"
               >
-                <Image 
-                  src={user.avatar} 
+                <Image
+                  src={user.avatar}
                   alt={user.name}
                   className="object-cover"
                   fill
-                  sizes="(max-width: 768px) 96px, 96px"
+                  sizes="112px"
                 />
               </motion.div>
-              
-              <div className="font-mono text-center md:text-left">
-                <h2 className="text-xl uppercase tracking-tight mb-2">{user.name}</h2>
-                <p className="text-sm opacity-60 mb-1">{user.username}</p>
-                <p className="text-xs uppercase mb-4">[ {user.role} ]</p>
+
+              <div className="text-center md:text-left">
+                <h2 className="neo-heading text-2xl mb-2">{user.name}</h2>
+                <p className="text-sm text-gray-500 font-medium mb-2">{user.username}</p>
+                <span className="neo-tag bg-neo-yellow">{user.role}</span>
+
+                <div className="mt-4">
+                  <motion.a
+                    href={`https://instagram.com/${user.instagram}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="neo-btn-primary text-xs inline-flex items-center gap-2"
+                    whileHover={{ y: -2, boxShadow: '6px 6px 0px #1A1A1A' }}
+                    whileTap={{ y: 1, boxShadow: '2px 2px 0px #1A1A1A' }}
+                  >
+                    @{user.instagram}
+                  </motion.a>
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -105,4 +101,4 @@ export default function Detail({ user, isOpen, onClose }: DetailProps) {
       )}
     </AnimatePresence>
   );
-} 
+}

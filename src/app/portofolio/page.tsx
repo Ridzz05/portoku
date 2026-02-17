@@ -4,47 +4,49 @@ import {
   AnimatedSection,
   AnimatedText,
   AnimatedLink,
-  AnimatedBackground
 } from './AnimatedElements';
 import ClientWrapper from '../contact/ClientWrapper';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 export default function Portfolio() {
   return (
     <main className="min-h-screen">
-      <div className="relative min-h-[80vh] flex items-center justify-center">
-        <div className="text-center max-w-5xl mx-auto px-4">
-          <ClientWrapper>
-            <AnimatedSection className="mb-8">
-              <h1 className="text-4xl font-mono uppercase tracking-tight pt-16 mt-6 mb-8">Portofolio</h1>
-              
-              <AnimatedText className="mb-8">
-                <p className="font-mono text-sm leading-relaxed max-w-2xl mx-auto">
-                  [ Berikut adalah beberapa proyek yang telah saya kerjakan. Setiap proyek mencerminkan 
-                  pendekatan saya dalam menyelesaikan masalah dan menciptakan solusi yang kreatif. ]
+      <div className="max-w-6xl mx-auto px-4 py-16">
+        <ClientWrapper>
+          <AnimatedSection className="mb-8">
+            <div className="text-center mb-12">
+              <h1 className="neo-heading text-4xl md:text-5xl mb-4">Portofolio</h1>
+              <div className="neo-card bg-neo-lavender inline-block px-6 py-3">
+                <p className="font-grotesk text-sm font-medium max-w-md">
+                  Berikut adalah beberapa proyek yang telah saya kerjakan. Setiap proyek mencerminkan
+                  pendekatan saya dalam menyelesaikan masalah dan menciptakan solusi yang kreatif.
                 </p>
-              </AnimatedText>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-                {projects.map((project, index) => (
-                  <PortfolioItem key={project.id} project={project} index={index} />
-                ))}
               </div>
-            </AnimatedSection>
-            
-            <AnimatedText className="mt-16" delay={0.8}>
-              <h3 className="font-mono text-xl uppercase tracking-tight mb-4">Ingin Berkolaborasi?</h3>
-              <p className="font-mono text-sm leading-relaxed max-w-2xl mx-auto mb-6">
-                [ Jika Anda tertarik untuk berkolaborasi atau memiliki pertanyaan tentang proyek saya, 
-                jangan ragu untuk menghubungi saya. ]
-              </p>
-              <AnimatedLink href="/contact">
-                [ Hubungi Saya ]
-              </AnimatedLink>
-            </AnimatedText>
+            </div>
 
-            <AnimatedBackground />
-          </ClientWrapper>
-        </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {projects.map((project, index) => (
+                <PortfolioItem key={project.id} project={project} index={index} />
+              ))}
+            </div>
+          </AnimatedSection>
+
+          <AnimatedText className="mt-16 text-center" delay={0.8}>
+            <h3 className="neo-heading text-2xl mb-4">Ingin Berkolaborasi?</h3>
+            <div className="neo-card bg-neo-mint/30 inline-block px-6 py-3 mb-6">
+              <p className="font-grotesk text-sm font-medium max-w-md">
+                Jika Anda tertarik untuk berkolaborasi atau memiliki pertanyaan tentang proyek saya,
+                jangan ragu untuk menghubungi saya.
+              </p>
+            </div>
+            <div className="mt-4">
+              <AnimatedLink href="/contact">
+                <ArrowRightIcon className="w-4 h-4 stroke-[2.5]" />
+                Hubungi Saya
+              </AnimatedLink>
+            </div>
+          </AnimatedText>
+        </ClientWrapper>
       </div>
     </main>
   );

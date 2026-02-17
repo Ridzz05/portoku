@@ -1,18 +1,19 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from './components/Navbar/Navbar'
-import { Noto_Sans_Javanese } from 'next/font/google'
+import Footer from './components/Footer/Footer'
+import { Space_Grotesk } from 'next/font/google'
 
-const javanese = Noto_Sans_Javanese({
-  weight: '400',
-  subsets: ['javanese'],
+const grotesk = Space_Grotesk({
+  subsets: ['latin'],
   display: 'swap',
-  variable: '--font-javanese',
+  variable: '--font-grotesk',
+  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
-  title: 'website',
-  description: 'sebuah website',
+  title: 'Rizki — Portfolio',
+  description: 'Portfolio website of Rizki, a Junior Web Developer creating creative and innovative solutions.',
 }
 
 export default function RootLayout({
@@ -22,9 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className={`bg-white text-black antialiased ${javanese.variable}`}>
+      <body className={`${grotesk.variable} font-grotesk`}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   )

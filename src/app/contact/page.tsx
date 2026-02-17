@@ -5,7 +5,7 @@ import {
   AnimatedText,
   AnimatedSocialLinks,
   AnimatedLink,
-  AnimatedBackground
+  AnimatedBackground,
 } from './AnimatedElements';
 import ClientWrapper from './ClientWrapper';
 
@@ -14,45 +14,37 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen">
-      <div className="relative min-h-[80vh] flex items-center justify-center">
-        <div className="text-center max-w-4xl mx-auto px-4">
-          <ClientWrapper>
-            <AnimatedContact className="mb-8">
-              <h1 className="text-4xl font-mono uppercase tracking-tight pt-16 mt-6 mb-8">Contact Me</h1>
-              
-              <div className="max-w-lg mx-auto">
-                <AnimatedText className="mb-8">
-                  <p className="font-mono text-sm leading-relaxed">
-                    [ Tertarik untuk bekerja sama atau ingin mengetahui lebih lanjut tentang proyek saya? 
-                    Silakan hubungi saya melalui form di bawah ini atau melalui media sosial. ]
-                  </p>
-                </AnimatedText>
-                
+      <div className="max-w-5xl mx-auto px-4 py-16">
+        <ClientWrapper>
+          <AnimatedContact className="mb-8">
+            <div className="text-center mb-12">
+              <h1 className="neo-heading text-4xl md:text-5xl mb-4">Contact Me</h1>
+              <div className="neo-card bg-neo-coral/20 inline-block px-6 py-3">
+                <p className="font-grotesk text-sm font-medium max-w-md">
+                  Tertarik untuk bekerja sama atau ingin mengetahui lebih lanjut tentang proyek saya?
+                  Silakan hubungi saya melalui form di bawah ini.
+                </p>
+              </div>
+            </div>
+
+            <div className="max-w-lg mx-auto">
+              <div className="neo-card bg-white p-6 md:p-8">
                 <ContactForm />
               </div>
-            </AnimatedContact>
-            
-            <AnimatedSocialLinks className="mt-12">
-              <h3 className="font-mono text-xl uppercase tracking-tight mb-4">Temukan Saya Di</h3>
-              <div className="flex flex-wrap justify-center gap-4">
-                <AnimatedLink 
-                  href={`https://instagram.com/${mainUser.instagram}`}
-                  className="font-mono text-sm border border-black px-4 py-2"
-                />
-                <AnimatedLink 
-                  href="https://github.com"
-                  className="font-mono text-sm border border-black px-4 py-2"
-                />
-                <AnimatedLink 
-                  href="https://linkedin.com"
-                  className="font-mono text-sm border border-black px-4 py-2"
-                />
-              </div>
-            </AnimatedSocialLinks>
+            </div>
+          </AnimatedContact>
 
-            <AnimatedBackground />
-          </ClientWrapper>
-        </div>
+          <AnimatedSocialLinks className="mt-16 text-center">
+            <h3 className="neo-heading text-2xl mb-6">Temukan Saya Di</h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              <AnimatedLink href={`https://instagram.com/${mainUser.instagram}`} />
+              <AnimatedLink href="https://github.com/Ridzz05" />
+              <AnimatedLink href="https://linkedin.com" />
+            </div>
+          </AnimatedSocialLinks>
+
+          <AnimatedBackground />
+        </ClientWrapper>
       </div>
     </main>
   );
