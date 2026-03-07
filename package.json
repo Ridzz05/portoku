@@ -9,9 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@devicon/react": "^0.0.3",
     "@heroicons/react": "^2.2.0",
     "framer-motion": "^12.5.0",
-    "next": "13.5.8",
+    "next": "^16.1.6",
     "react": "^18",
     "react-dom": "^18"
   },

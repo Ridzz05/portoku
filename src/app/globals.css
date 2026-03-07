@@ -51,8 +51,8 @@
   }
 
   .neo-tag {
-    @apply neo-border shadow-brutal-sm font-grotesk text-xs font-bold px-3 py-1 
-           inline-block bg-white;
+    @apply neo-border shadow-brutal-sm font-grotesk text-xs font-bold px-3 py-1.5 
+           inline-flex items-center gap-2 bg-white;
   }
 
   .neo-input {
