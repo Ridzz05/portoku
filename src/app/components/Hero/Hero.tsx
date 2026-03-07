@@ -27,28 +27,6 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center px-4 py-16 overflow-hidden">
-      {/* Decorative shapes */}
-      <motion.div
-        className="absolute top-20 left-10 w-16 h-16 bg-neo-yellow neo-border rotate-12 hidden md:block"
-        animate={{ rotate: [12, -5, 12], y: [0, -10, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute top-32 right-16 w-12 h-12 bg-neo-coral neo-border rounded-full hidden md:block"
-        animate={{ scale: [1, 1.15, 1], rotate: [0, 10, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-      />
-      <motion.div
-        className="absolute bottom-32 left-20 w-10 h-10 bg-neo-mint neo-border hidden md:block"
-        animate={{ rotate: [0, 90, 0], y: [0, -8, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-10 w-14 h-14 bg-neo-lavender neo-border rotate-45 hidden md:block"
-        animate={{ rotate: [45, 30, 45], scale: [1, 1.1, 1] }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-      />
-
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -58,7 +36,7 @@ export default function Hero() {
         {/* Avatar */}
         <motion.div variants={itemVariants} className="mb-8 flex justify-center">
           <motion.div
-            className="relative w-36 h-36 neo-border shadow-brutal-lg bg-neo-sky rounded-2xl overflow-hidden"
+            className="relative w-36 h-36 neo-border shadow-brutal-lg bg-neo-sky rounded-full overflow-hidden"
             whileHover={{ rotate: -3, scale: 1.05 }}
           >
             <Image

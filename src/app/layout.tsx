@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
+import DecorativeShapes from './components/DecorativeShapes/DecorativeShapes'
 import { Space_Grotesk } from 'next/font/google'
 
 const grotesk = Space_Grotesk({
@@ -24,8 +25,9 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={`${grotesk.variable} font-grotesk`}>
+        <DecorativeShapes />
         <Navbar />
-        {children}
+        <div className="relative z-10">{children}</div>
         <Footer />
       </body>
     </html>

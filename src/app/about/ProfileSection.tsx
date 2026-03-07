@@ -14,7 +14,7 @@ export default function ProfileSection({ user }: ProfileSectionProps) {
     <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] items-center gap-8 lg:gap-12 max-w-4xl mx-auto">
       {/* Avatar */}
       <motion.div
-        className="relative w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 neo-border shadow-brutal-lg bg-neo-sky rounded-2xl overflow-hidden flex-shrink-0 mx-auto lg:mx-0"
+        className="relative w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 neo-border shadow-brutal-lg bg-neo-sky rounded-full overflow-hidden flex-shrink-0 mx-auto lg:mx-0"
         whileHover={{ rotate: -3, scale: 1.05 }}
         initial={{ scale: 0.8, rotate: 5 }}
         animate={{ scale: 1, rotate: 0 }}
