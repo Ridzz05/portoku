@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className={`${grotesk.variable} font-grotesk`}>
         <DecorativeShapes />
         <Navbar />
-        <div className="relative z-10">{children}</div>
+        <div className="relative">{children}</div>
         <Footer />
       </body>
     </html>

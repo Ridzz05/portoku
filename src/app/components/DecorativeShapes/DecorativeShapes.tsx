@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function DecorativeShapes() {
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: -1 }}>
       <motion.div
         className="absolute top-16 left-6 md:left-10 w-10 h-10 md:w-16 md:h-16 bg-neo-yellow neo-border"
         animate={{ rotate: [12, -12, 12], y: [0, -20, 0], x: [0, 8, 0] }}
