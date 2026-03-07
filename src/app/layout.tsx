@@ -24,11 +24,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className={`${grotesk.variable} font-grotesk`}>
+      <body className={`${grotesk.variable} font-grotesk relative`}>
         <DecorativeShapes />
-        <Navbar />
-        <div className="relative">{children}</div>
-        <Footer />
+        <div className="relative z-10">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   )

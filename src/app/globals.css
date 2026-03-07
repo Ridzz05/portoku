@@ -24,7 +24,7 @@
   }
 
   .neo-card {
-    @apply neo-border neo-shadow bg-white;
+    @apply neo-border neo-shadow bg-white relative;
   }
 
   .neo-btn {

@@ -53,6 +53,19 @@ export function AnimatedSocialLinks({ children, className }: AnimatedContainerPr
   );
 }
 
+import GithubOriginal from '@devicon/react/github/original';
+import LinkedinOriginal from '@devicon/react/linkedin/original';
+
+function InstagramIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export function AnimatedLink({ href, className }: { href: string; className?: string }) {
   const getLabel = () => {
     if (href.includes('instagram')) return 'Instagram';
@@ -66,15 +79,22 @@ export function AnimatedLink({ href, className }: { href: string; className?: st
     return 'bg-neo-sky';
   };
 
+  const getIcon = () => {
+    if (href.includes('instagram')) return <InstagramIcon size={18} />;
+    if (href.includes('github')) return <GithubOriginal size={18} />;
+    return <LinkedinOriginal size={18} />;
+  };
+
   return (
     <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`neo-border shadow-brutal ${getColor()} px-5 py-2.5 font-bold text-sm inline-block ${className || ''}`}
+      className={`neo-border shadow-brutal ${getColor()} px-5 py-2.5 font-bold text-sm inline-flex items-center gap-2 ${className || ''}`}
       whileHover={{ y: -3, boxShadow: '6px 6px 0px #1A1A1A', scale: 1.05 }}
       whileTap={{ y: 1, boxShadow: '2px 2px 0px #1A1A1A', scale: 0.95 }}
     >
+      {getIcon()}
       {getLabel()}
     </motion.a>
   );
