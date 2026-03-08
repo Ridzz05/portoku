@@ -107,86 +107,86 @@ export default function Navbar() {
         {isOpen && (
           <motion.div
             key="sidebar-overlay"
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={overlayVariants}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             className="fixed inset-0 bg-neo-black/40 z-[60] md:hidden"
             onClick={() => setIsOpen(false)}
           />
         )}
+      </AnimatePresence>
+      <AnimatePresence>
         {isOpen && (
+          <motion.aside
+            key="sidebar-panel"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="fixed top-0 right-0 h-full w-[280px] bg-white neo-border border-r-0 z-[70] md:hidden flex flex-col shadow-[-8px_0px_0px_#1A1A1A]"
+          >
+            {/* Sidebar Header */}
+            <div className="flex items-center justify-between p-5 border-b-[3px] border-neo-black">
+              <span className="font-black text-lg uppercase tracking-tight">
+                Menu<span className="text-neo-coral">.</span>
+              </span>
+              <motion.button
+                onClick={() => setIsOpen(false)}
+                className="neo-border shadow-brutal-sm bg-neo-coral text-white p-1.5"
+                whileHover={{ rotate: 90, scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <XMarkIcon className="w-5 h-5 stroke-[3]" />
+              </motion.button>
+            </div>
 
-            {/* Sidebar */}
-            <motion.aside
-              initial="closed"
-              animate="open"
-              exit="closed"
-              variants={sidebarVariants}
-              className="fixed top-0 right-0 h-full w-[280px] bg-white neo-border border-r-0 z-[70] md:hidden flex flex-col shadow-[-8px_0px_0px_#1A1A1A]"
-            >
-              {/* Sidebar Header */}
-              <div className="flex items-center justify-between p-5 border-b-[3px] border-neo-black">
-                <span className="font-black text-lg uppercase tracking-tight">
-                  Menu<span className="text-neo-coral">.</span>
-                </span>
-                <motion.button
-                  onClick={() => setIsOpen(false)}
-                  className="neo-border shadow-brutal-sm bg-neo-coral text-white p-1.5"
-                  whileHover={{ rotate: 90, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <XMarkIcon className="w-5 h-5 stroke-[3]" />
-                </motion.button>
-              </div>
-
-              {/* Nav Links */}
-              <div className="flex-1 p-5 space-y-3">
-                {navLinks.map((link, index) => {
-                  const colors = ['bg-neo-yellow', 'bg-neo-mint', 'bg-neo-sky', 'bg-neo-coral'];
-                  return (
-                    <motion.div key={link.name} variants={itemVariants}>
-                      <Link
-                        href={link.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`block neo-border shadow-brutal-sm ${colors[index % colors.length]} px-4 py-3.5 font-bold uppercase tracking-wide text-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-brutal transition-all`}
-                      >
-                        {link.name}
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </div>
-
-              {/* Bottom Decorative Widgets */}
-              <div className="p-5 border-t-[3px] border-neo-black">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
-                  Random Widgets ✨
-                </p>
-                <div className="flex flex-wrap items-center gap-3">
-                  {randomWidgets.map((widget, i) => (
-                    <motion.div
-                      key={i}
-                      variants={widgetVariants}
-                      className={`${widget.size} ${widget.color} ${widget.shape} neo-border shadow-brutal-sm flex items-center justify-center`}
-                      animate={{
-                        rotate: widget.shape.includes('rotate') ? [0, 10, -10, 0] : 0,
-                        scale: [1, 1.1, 1],
-                      }}
-                      transition={{
-                        duration: 3 + i * 0.5,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                        delay: i * 0.3,
-                      }}
+            {/* Nav Links */}
+            <div className="flex-1 p-5 space-y-3">
+              {navLinks.map((link, index) => {
+                const colors = ['bg-neo-yellow', 'bg-neo-mint', 'bg-neo-sky', 'bg-neo-coral'];
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ x: 40, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.1 + index * 0.07 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`block neo-border shadow-brutal-sm ${colors[index % colors.length]} px-4 py-3.5 font-bold uppercase tracking-wide text-sm hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-brutal transition-all`}
                     >
-                      {widget.icon}
-                    </motion.div>
-                  ))}
-                </div>
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Bottom Decorative Widgets */}
+            <div className="p-5 border-t-[3px] border-neo-black">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
+                Random Widgets ✨
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                {randomWidgets.map((widget, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1, rotate: widget.shape.includes('rotate') ? [0, 10, -10, 0] : 0 }}
+                    transition={{
+                      scale: { type: 'spring', stiffness: 300, damping: 15, delay: 0.3 + i * 0.05 },
+                      rotate: { duration: 3 + i * 0.5, repeat: Infinity, ease: 'easeInOut' },
+                    }}
+                    className={`${widget.size} ${widget.color} ${widget.shape} neo-border shadow-brutal-sm flex items-center justify-center`}
+                  >
+                    {widget.icon}
+                  </motion.div>
+                ))}
               </div>
-            </motion.aside>
-          </>
+            </div>
+          </motion.aside>
         )}
       </AnimatePresence>
     </>
