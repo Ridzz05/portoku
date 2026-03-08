@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { PaperAirplaneIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { PaperAirplaneIcon, CheckCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export default function ContactForm() {
   const [formState, setFormState] = useState({
@@ -12,6 +12,7 @@ export default function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
@@ -20,19 +21,35 @@ export default function ContactForm() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Gagal mengirim pesan.');
+      }
+
       setIsSubmitted(true);
       setFormState({ name: '', email: '', message: '' });
 
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
-    }, 1500);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Terjadi kesalahan. Coba lagi.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -55,6 +72,17 @@ export default function ContactForm() {
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="text-left space-y-5">
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="neo-border bg-neo-coral/20 p-3 flex items-center gap-2"
+            >
+              <ExclamationTriangleIcon className="w-5 h-5 stroke-[2] flex-shrink-0" />
+              <p className="font-grotesk text-sm font-medium">{error}</p>
+            </motion.div>
+          )}
+
           <div>
             <label htmlFor="name" className="block font-grotesk text-sm font-bold uppercase mb-2">
               Nama
